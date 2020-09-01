@@ -17,4 +17,9 @@ void main() {
   // a better way might be...
   int n = number;
   print(successor(n));
+
+  // Variables can be dynamic, only if specified. Don't
+  dynamic box = 'Fernando';
+  box = 42.42;
+  print(box);
 }
