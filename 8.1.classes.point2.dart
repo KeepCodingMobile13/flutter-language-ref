@@ -20,6 +20,9 @@ class Point {
 
   // Método normal con parámetro nombrado
   Point scale({double by = 1}) => Point(_x * by, _y * by);
+
+  // Sobrecarga de operador
+  Point operator +(Point p) => Point(_x + p._x, _y + p._y);
 }
 
 void main() {
