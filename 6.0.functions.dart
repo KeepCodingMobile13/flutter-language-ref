@@ -21,22 +21,6 @@ void main() {
 
   // Los params no son final, pero no hagas eso....
   print(badFunction(0));
-
-  // High order function
-  final add42 = adder(42);
-  print(add42(8));
-
-  var rc = subtract(42, 42, ifZero: () {
-    print("We got zero: ain't that shit?");
-  });
-  print(rc);
-
-  rc = subtract(32, 32);
-  print(rc);
-
-  // Function overloading: a no, no
-  // This will cause a runtime error
-  //subtract(32, 30 + 2, ifZero: (int n) => n / 9);
 }
 
 // 2 syntaxes: full, and shorthand (arrow)
