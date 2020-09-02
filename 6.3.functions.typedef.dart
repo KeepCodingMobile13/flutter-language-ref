@@ -1,6 +1,6 @@
 /*
 NOT like Swift's typeAlias: only works for functions.
-Will change
+Will change, until then, use it when high-order functions
 */
 
 typedef Predicate<T, V> = bool Function(T a, V b);
