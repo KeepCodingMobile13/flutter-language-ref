@@ -1,51 +1,40 @@
 /*
-
+   
 */
 
-import 'dart:math';
+/*
+  No interfaces or protocols per se: just abstract classes instead.
+  Use is to check conformance to a protocol
+*/
 
-class Point {
-  double _x, _y;
-  Point(double x, double y)
-      : _x = x,
-        _y = y;
+abstract class Pair {
+  // can't be instanciated
+  // No implmentation
+  get head;
+  get tail;
+}
 
-  static double distance(Point p1, Point p2) {
-    double dx = p1._x - p2._x;
-    double dy = p1._y - p2._y;
+class Jedi implements Pair {
+  String name;
+  String lastName;
 
-    return sqrt(pow(dx, 2) + pow(dy, 2));
-  }
+  Jedi(name, lastName)
+      : this.name = name,
+        this.lastName = lastName;
 
-  Point scale({double by = 1}) => Point(_x * by, _y * by);
+  // Pair
+  get head => name;
+  get tail => lastName;
+}
 
-  Point operator +(Point p) => Point(_x + p._x, _y + p._y);
+/*
+  Issues: Pair is dynamic. Let's make it generic!
+*/
 
-  // Object Interface
-  @override
-  String toString() {
-    return "<${this.runtimeType}: ($_x, $_y)>";
-  }
+void main(List<String> args) {
+  final luke = Jedi("Luke", "Skywalker");
+  final yoda = Jedi("Minch", "Yoda");
 
-  @override // explicar override
-  bool operator ==(dynamic other) {
-    if (!(other is Point)) {
-      return false;
-    } else if (identical(other, this)) {
-      // Explicar identical y que tiene que estar entre ()
-      return true;
-    } else {
-      return (_y == other._y) && (_x == other._x);
-    }
-  }
-
-  // Si sobrescribes ==, hay que sobrescribir hash
-  // Dos objetos iguales han de tener el mismo hash
-  // se puede hacer un xor de los hashes de las iVars,
-  // crear un proxy de hash o usar el paquete quiver que tiene
-  // buenas funciones de hash
-  @override
-  int get hashCode {
-    return _y.hashCode ^ _x.hashCode;
-  }
+  print(yoda.tail);
+  print(luke is Pair);
 }
