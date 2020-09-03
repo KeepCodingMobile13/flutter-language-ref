@@ -1,0 +1,4 @@
+name: language_tour
+
+dev_dependencies:
+  test: ^1.15.3
