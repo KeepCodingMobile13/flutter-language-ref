@@ -23,7 +23,7 @@ class Counter {
   bool operator ==(dynamic other) {
     if (identical(this, other)) {
       return true;
-    } else if (!(other is Counter)) {
+    } else if (other is! Counter) {
       return false;
     } else {
       return _current == other.current;

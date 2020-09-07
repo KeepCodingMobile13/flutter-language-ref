@@ -28,7 +28,7 @@ class Point {
   @override // explicar override
   bool operator ==(dynamic other) {
     // Explicar is & as
-    if (!(other is Point)) {
+    if (other is! Point) {
       return false;
     } else if (identical(other, this)) {
       // Explicar identical y que tiene que estar entre ()
