@@ -1,5 +1,3 @@
-library stack;
-
 class Stack<Element> {
   List<Element> _stack = [];
 

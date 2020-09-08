@@ -14,7 +14,7 @@
 
   *Opciones de URI*
 
-  * Nombre o ruta a la librería: más vale que esté en local
+  * Ruta a la librería: más vale que esté en local
   * Protocolo http o https: no recomendado
   * protocolo dart: para cosas de sistema
   * protocolo package: lo gestiona pub y más vale que esté en pub.dev

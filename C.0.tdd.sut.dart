@@ -1,5 +1,3 @@
-library counter;
-
 class Counter {
   int _current = 0;
 
