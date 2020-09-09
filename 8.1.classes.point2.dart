@@ -1,5 +1,3 @@
-library points; // nombra la librería: si no tiene un main, es una librería, sino, es un script
-
 import 'dart:math'; // explicar cómo se importan cosas
 
 class Point {

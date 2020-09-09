@@ -4,7 +4,7 @@ void main() {
   print(z); // contains null!
   print(z++); // NoSuchMethod!
 
-  // null is the single instance of the class Null. It is nto a "yes-man" as
+  // null is the single instance of the class Null. It is not a "yes-man" as
   // in Objective-C and can cause NoSuchMethod errors
   // Always init your shit!!!
 }
