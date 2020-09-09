@@ -3,7 +3,7 @@ import 'dart:math';
 // Ni constructores ni nada estático se hereda.
 
 class Point {
-  double _x, _y;
+  final double _x, _y;
   Point(double x, double y)
       : _x = x,
         _y = y;
@@ -42,9 +42,13 @@ class Point {
   // Dos objetos iguales han de tener el mismo hash
   // se puede hacer un xor de los hashes de las iVars,
   // crear un proxy de hash o usar el paquete quiver que tiene
-  // buenas funciones de hash
+  // buenas funciones de hash.
+  // El Hash no debe de cambiar nunca
   @override
   int get hashCode {
+    // Como los campos son cts, no pasa nada:
+    // el hash no cambiará y no volverá majara a
+    // las colecciones
     return _y.hashCode ^ _x.hashCode;
   }
 }
