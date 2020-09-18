@@ -17,6 +17,7 @@ main(List<String> args) {
 
   // o también...
   var dojos = ["Cobra Kai", "Miyagi do"];
+  print(dojos);
 
   // Iteración
   for (int elt in nums) {
@@ -70,6 +71,7 @@ main(List<String> args) {
   */
 
   var w = z.map((e) => e * e);
+  print(w);
 
   /*
 FP: REDUCTION
@@ -77,6 +79,7 @@ reduce
 */
   // skip se salta el primero
   final zz = [0, 1, 2, 3, 4, 5, 6];
+  print(zz);
 
   var reduced = z.skip(1).reduce((tally, elt) {
     print("tally is $tally");

@@ -1,5 +1,4 @@
 // Skip for now
-import 'dart:io';
 
 void main() {
   final b = Box(42);
@@ -23,30 +22,6 @@ void main() {
   final k2 = KeyedBox(b, keyed);
   print(k2);
   print(k2 == keyed);
-
-  // Peaso descubrimeintros (pal cuaderno amarillo)
-  /*
-  a) runtimeType no es un tipo: dart es una mierda y ObjectiveC es la hostia
-
-  No puedo reusar el == de mi super clase, básicamnete por que no puedo hacer 
-  la siguiente comparación:
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    } else if (other is! runtimeType) { // se queja porque no puede, porque no sabe
-      return false;
-    } else {
-      return _val == (other as runtimeType)._val; // y perdió las habilidades
-    }
-  }
-
-  la menar de resolver esta mierda, es usar el proxyForEquality. Soy un puto 
-  genio y debería de hacer una mierda de un mixin para estas vainas
-
-
-  b) SI quiere reaprovechar el toString de mi super, es mejor que no tenga
-  caracter de cierre. Uséase, en vez de <NSString: "lucas"> #NSString: "lucas"
-  */
 }
 
 class Box<Value> extends Object {

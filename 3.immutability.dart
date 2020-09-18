@@ -8,6 +8,7 @@ void main() {
 
   // Values can be constant too
   final bestEpisodes = const ['IV', 'V', 'VI'];
+  print(bestEpisodes);
 }
 
 String greet(String name) {
