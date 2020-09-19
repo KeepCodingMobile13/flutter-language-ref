@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:test/test.dart';
-import 'C.0.tdd.sut.dart';
+import 'c.0.tdd.sut.dart';
 
 // Run them with:
 // pub run test C.1.tdd.tests.dart
