@@ -3,6 +3,8 @@ typedef ModelCallback<Model> = void Function(Model);
 class Publisher {
   Set<ModelCallback> _subscribers = {};
 
+  int get subscriberCount => _subscribers.length;
+
   void subscribe(ModelCallback callback) {
     _subscribers.add(callback);
   }
@@ -21,6 +23,11 @@ class Publisher {
     for (ModelCallback subscriber in _subscribers) {
       subscriber(this);
     }
+  }
+
+  @override
+  String toString() {
+    return "<$runtimeType: $subscriberCount>";
   }
 }
 
@@ -80,4 +87,5 @@ void main() {
 
   vader.cancellAllSubscriptions();
   vader.name = "Anakin";
+  print(vader);
 }
