@@ -1,47 +1,83 @@
-class Stack<Element> {
-  List<Element> _contents = [];
+typedef ModelCallback = void Function(dynamic);
 
-  int get height => _contents.length;
+class Publisher {
+  Set<ModelCallback> _subscribers = {};
 
-  int push(Element newValue) {
-    _contents.insert(0, newValue);
-    return height;
+  void subscribe(ModelCallback callback) {
+    _subscribers.add(callback);
   }
 
-  Element pop() {
-    var first = _contents.first;
-    _contents.removeAt(0);
-    return first;
+  void cancelSubscription(ModelCallback callback) {
+    if (_subscribers.contains(callback)) {
+      _subscribers.remove(callback);
+    }
+  }
+
+  void cancellAllSubscriptions() {
+    _subscribers.clear();
+  }
+
+  void notify() {
+    for (ModelCallback subscriber in _subscribers) {
+      subscriber(this);
+    }
   }
 }
 
-// Es una colección también, con lo cual no tiene mucho sentido,
-// dado que no va a poder sincronizar _ships con _contents
-// Es más cuando la funcionalidad del mixin es transversal
-class RebelAllianceFleet with Stack<String> {
-  List<String> _ships;
+class Person with Publisher {
+  String _name;
+  String _lastName;
 
-  int get size => _ships.length;
+  String get name => _name;
+  String get lastName => _lastName;
 
-  RebelAllianceFleet(List<String> ships) : _ships = ships;
-
-  void deploy() {
-    print("deploying");
+  void set name(String newVal) {
+    _name = newVal;
+    notify();
   }
 
-  void reGroup() {
-    print("regrouping...");
+  void set lastName(String newVal) {
+    _lastName = newVal;
+    notify();
+  }
+
+  Person({String name, String lastName})
+      : _name = name,
+        _lastName = lastName;
+
+  String get fullName {
+    return "$_name $_lastName".trim();
+  }
+
+  @override
+  String toString() {
+    return "<$runtimeType: $fullName>";
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
+      return true;
+    } else {
+      return other is Person && this.fullName == other.fullName;
+    }
+  }
+
+  @override
+  int get hashCode {
+    return fullName.hashCode;
   }
 }
 
 void main() {
-  var f = RebelAllianceFleet(
-      ["Calamari Cruiser", "Hammerhead Corvette", "Nebulon-B Frigate"]);
+  Person vader = Person(name: "Anakin", lastName: "Skywalker");
 
-  f.push("CR90 Corvette");
-  f.push("CR90 Corvette");
+  void logger(dynamic sender) => print("$sender just changed!");
 
-  f.deploy();
+  vader.subscribe(logger);
+  vader.name = "Manolo";
+  vader.lastName = "Escobar";
 
-  print("The curent size of the fleet is ${f.height} or is it ${f.size}?");
+  vader.cancellAllSubscriptions();
+  vader.name = "Anakin";
 }
