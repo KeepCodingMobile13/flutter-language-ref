@@ -1,4 +1,4 @@
-typedef ModelCallback = void Function(dynamic);
+typedef ModelCallback<Model> = void Function(Model);
 
 class Publisher {
   Set<ModelCallback> _subscribers = {};
