@@ -51,6 +51,17 @@ main(List<String> args) {
 
   print(evenSquares);
 
+  // El constructor generate() hace lago similar
+  var oddSquares = List.generate(15, (int index) {
+    if (index.isOdd) {
+      return index * index;
+    } else {
+      return index;
+    }
+  });
+
+  print(oddSquares);
+
   // Spread operator: syntactic suga para append. También de flutter
   var z = [0, ...evenSquares];
   print(z);

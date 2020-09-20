@@ -87,5 +87,6 @@ void main() {
 
   vader.cancellAllSubscriptions();
   vader.name = "Anakin";
-  print(vader);
+  // se ejecuta el toString de Person y se ignora el de Publisher
+  print(vader); 
 }
