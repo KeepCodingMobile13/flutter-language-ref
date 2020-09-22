@@ -25,16 +25,13 @@ class Point {
     return "<${this.runtimeType}: ($_x, $_y)>";
   }
 
-  @override // explicar override
-  bool operator ==(dynamic other) {
-    // Explicar is & as
-    if (other is! Point) {
-      return false;
-    } else if (identical(other, this)) {
-      // Explicar identical y que tiene que estar entre ()
+  // estilo recomendado en https://dart-lang.github.io/linter/lints/unrelated_type_equality_checks.html
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) {
       return true;
     } else {
-      return (_y == other._y) && (_x == other._x);
+      return other is Point && (_x == other._x) && (_y == other._y);
     }
   }
 
