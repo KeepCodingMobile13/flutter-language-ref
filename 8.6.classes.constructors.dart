@@ -10,11 +10,11 @@ V   - Destructors? (no hay porque en JS no los hay)
 
 /* I
   If you don't define a constructor, dart creates one for you that allocates
-  memmory and sets all iVars to null. This last part is not catastrophic.
+  memmory.
 */
 
 class Box<T> {
-  T value; // Cannot be set to final, as it's not set. Always declare your constructors
+  late T value; // Error
 }
 
 class BetterBox<T> {

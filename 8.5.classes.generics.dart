@@ -4,11 +4,11 @@ abstract class Pair<Head, Tail> {
 }
 
 class Person extends Pair {
-  String name;
-  String surName;
+  String? name;
+  String? surName;
 
-  String get head => name;
-  String get tail => surName;
+  String? get head => name;
+  String? get tail => surName;
 }
 
 // Se puede limitar el tipo genérico?
