@@ -1,6 +1,18 @@
 /*
 
-Ver explicación en pag 190
+La única forma de comunicar un error, es lanzando "algo".
+
+Aunque puedes lanzar cualquier cosa, NO lo hagas.
+
+Lanza Errors cuando la cosa no tiene arreglo.
+Lanza Exceptions cuando crees que si lo tiene.
+
+En general, sólo Dart y librerias del sdk deberían lanzar
+Errors, tu código debe de lanzar Exceptions
+
+
+1. Crea una clase que implementa Exception
+2. Lánzala
 
 Nunca se sabe quién lanza excepciones ni de qué tipo:
 Leete la documentación y haz tests
@@ -9,12 +21,12 @@ Leete la documentación y haz tests
 
 class Ewok {}
 
-class OutOfEwoksError extends Error {}
+class OutOfEwoksException implements Exception {}
 
-class TooManyEworksError extends Error {}
+class TooManyEworksException implements Exception {}
 
 bringMoreEwoks() {
-  throw OutOfEwoksError();
+  throw OutOfEwoksException();
 }
 
 breedMoreEwoks() {}
@@ -27,13 +39,12 @@ void main() {
 
   try {
     bringMoreEwoks();
-  } on TooManyEworksError {
+  } on TooManyEworksException {
     print("Must kill some ewoks first");
   } on Exception catch (e) {
-    print("Some pretty bad shit happened: $e");
+    print("Something bad happended: $e");
   } on Error catch (err) {
-    print(
-        "Something bad happened, but not too serious: $err\n ${err.stackTrace}");
+    print("Some serious shit happened: $err\n ${err.stackTrace}");
     breedMoreEwoks();
   } catch (e) {
     // cualquier cosa que no sea excepcion o error: nunca lances algo que no lo sea
