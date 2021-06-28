@@ -48,7 +48,7 @@ class Person with Publisher {
     notify();
   }
 
-  Person({String name, String lastName})
+  Person({required String name, required String lastName})
       : _name = name,
         _lastName = lastName;
 

@@ -25,7 +25,7 @@ main() {
   });
 
   group("state mutation", () {
-    Counter c;
+    late Counter c;
 
     setUp(() {
       c = Counter();
@@ -40,8 +40,8 @@ main() {
   });
 
   group("Object interface", () {
-    Counter c1;
-    Counter c2;
+    late Counter c1;
+    late Counter c2;
 
     setUp(() {
       c1 = Counter();
